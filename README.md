@@ -1,16 +1,16 @@
-### 1. Build Everything
+### Build
 ```bash
 make all
 ```
 
-### 3. Clean Build
-
-```bash
-make clean
-```
-
-### 4. Run the Program
+### Run the Program
 
 ```bash
 make run
+```
+
+### Clean Build
+
+```bash
+make clean
 ```
