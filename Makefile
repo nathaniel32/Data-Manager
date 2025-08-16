@@ -8,17 +8,18 @@ BUILD_DIR = build
 BIN_DIR = bin
 
 # File
+FILE = app
 SRC = $(wildcard $(SRC_DIR)/*.c)
 OBJ = $(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/%.o,$(SRC))
-BIN = $(BIN_DIR)/app
+BIN_PATH = $(BIN_DIR)/${FILE}
 
 #######################################################################################################################
 # gcc src/*.c -o bin/app
 # Target default
-all: $(BIN)
+all: $(BIN_PATH)
 
 # executable
-$(BIN): $(OBJ) | $(BIN_DIR)
+$(BIN_PATH): $(OBJ) | $(BIN_DIR)
 	$(CC) $(OBJ) -o $@
 
 # object files
@@ -34,9 +35,12 @@ $(BIN_DIR):
 #######################################################################################################################
 # clean build
 clean:
-	rm -rf $(BUILD_DIR)/*.o $(BIN)
+	rm -rf $(BUILD_DIR)/*.o $(BIN_PATH)
 
 #######################################################################################################################
 # run program
-run: $(BIN)
-	./$(BIN)
+#run: $(BIN_PATH)
+#	./$(BIN_PATH)
+
+run:
+	cd ${BIN_DIR} && ./$(FILE)
