@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <direct.h>
 #include "../include/aufgabe1.h"
 #include "../include/aufgabe2.h"
 #include "../include/aufgabe3.h"
@@ -10,9 +11,20 @@ void int_wahl(int *nr){
     getchar(); // Eingabepuffer leeren
 }
 
+void make_dir(const char *folder){
+    if (_mkdir(folder) == 0) {
+        printf("Ordner '%s' wurde erfolgreich erstellt.\n", folder);
+    } else {
+        perror("Ordner konnte nicht erstellt werden oder ist bereits vorhanden");
+    }
+}
+
 int main() {
     int wahl;
 
+    const char *ordner = "../data";
+    make_dir(ordner);
+    
     do {
         printf("\nMenu\n");
         printf("1. Aufgabe1\n");
@@ -25,7 +37,7 @@ int main() {
             case 1:
                 Kontakt *telefonbuch = NULL;
                 int anzahl_kontakte = 0;
-                const char *kontakt_dateiname = "data/telefonbuch.dat";
+                const char *kontakt_dateiname = "../data/telefonbuch.dat";
                 kontakt_laden(&telefonbuch, &anzahl_kontakte, kontakt_dateiname);
                 do {
                     printf("\nElektronisches Telefonverzeichnis\n");
@@ -62,7 +74,7 @@ int main() {
             case 2:
                 Material *materialien = NULL;
                 int anzahl_material = 0;
-                const char *material_dateiname = "data/materialverwaltung.dat";
+                const char *material_dateiname = "../data/materialverwaltung.dat";
                 material_laden(&materialien, &anzahl_material, material_dateiname);
                 do {
                     printf("\nMaterialverwaltung\n");
@@ -103,7 +115,7 @@ int main() {
             case 3:
                 Woerterbuch *wortschatz = NULL;
                 int anzahl_wortschatz = 0;
-                const char *woerterbuch_dateiname = "data/woerterbuch.dat";
+                const char *woerterbuch_dateiname = "../data/woerterbuch.dat";
                 wortschatz_laden(&wortschatz, &anzahl_wortschatz, woerterbuch_dateiname);
                 do {
                     printf("\nWoerterbuch\n");
