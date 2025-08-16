@@ -1,23 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <direct.h>
+#include "../include/utils.h"
 #include "../include/aufgabe1.h"
 #include "../include/aufgabe2.h"
 #include "../include/aufgabe3.h"
-
-void int_wahl(int *nr){
-    scanf("%d", nr);
-    getchar(); // Eingabepuffer leeren
-}
-
-void make_dir(const char *folder){
-    if (_mkdir(folder) == 0) {
-        printf("Ordner '%s' wurde erfolgreich erstellt.\n", folder);
-    } else {
-        perror("Ordner konnte nicht erstellt werden oder ist bereits vorhanden");
-    }
-}
 
 int main() {
     int wahl;
